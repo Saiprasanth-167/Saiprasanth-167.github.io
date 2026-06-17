@@ -253,7 +253,7 @@ if (cards.length > 0) {
     card.addEventListener("mouseleave", () => {
       card.style.background = "rgba(255,255,255,.06)";
     });
-  });
+ });
 }
 
 console.log(`
@@ -261,3 +261,13 @@ console.log(`
 Sai Prasanth Portfolio
 =====================================
 `);
+
+// ==========================================
+// INITIAL SETUP ON RENDER
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+  const firstYearBtn = document.querySelector('.year-node.year-1') || document.querySelector('.year-node');
+  if (firstYearBtn) {
+    window.switchYear(1, firstYearBtn);
+  }
+});
