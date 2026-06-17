@@ -125,40 +125,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 // ==========================================
-// INTERACTIVE ACADEMIC TIMELINE INTERNALS
+// INTERACTIVE ACADEMIC DATA DICTIONARY
 // ==========================================
 const academicData = {
     1: {
-        gpa: "7.54", // Replace with your real 1st Year CGPA
+        gpa: "7.54", 
         title: "FIRST YEAR METRICS",
         achievements: [
             "Maintained an exceptional academic standard over fundamental core courses.",
-            "Built foundational understanding of Object-Oriented Programming structures and Engineering Mathematics.",
-            "Engaged in core logic optimization and foundational algorithm frameworks."
+            "Built foundational understanding of Object-Oriented Programming models and engineering math.",
+            "Engaged in logic building and algorithm development layouts."
            "Joined into NSS and awarded many awards and felicitations from my college"
         ]
     },
     2: {
-        gpa: "7.43", // Replace with your real 2nd Year CGPA
+        gpa: "7.43", // Replace with your real 2nd Year CGPA if different
         title: "SECOND YEAR METRICS",
         achievements: [
-            "Specialized in advanced Data Structures, Object-Oriented Analysis (OOSE), and Database Management Systems.",
-            "Mastered core full-stack web development integration frameworks using Python and Flask.",
-            "Lead a Contigent of 21 members in my college Parade During August 15 as part of NSS"
+            "Specialized in Advanced Data Structures, Object-Oriented Software Engineering (OOSE), and Database Frameworks.",
+            "Mastered full-stack web integration architectures utilizing Python and Flask environments.",
+            "Explored practical applications of classical ciphers and K-Means clustering engines."
+           "Lead a Contingent of 21 members in my college Parade During August 15 as part of NSS"
         ]
     },
     3: {
-        gpa: "Final Sem results Pending", // Replace with your real 3rd Year CGPA
+        gpa: "Final Sem Results Pending", // Replace with your real 3rd Year CGPA if different
         title: "THIRD YEAR METRICS",
         achievements: [
-            "Deepened research expertise across Deep Learning architectures and Natural Language Processing vectors.",
-            "Engineered secure decentralized application architectures and optimized API delivery layers.",
+            "Deepened development expertise across Progressive Web Application (PWA) deployment frameworks.",
+            "Optimized backend logic distribution layouts and structural database queries.",
             "Got selected for prestigeous camp ever held at IITG, Honoured by Governor of Assam"
-           "Now I am the Vice-President of a club named Paryavaran for entire 3 campuses and also got promoted as NSS incharge of our college"
+            "Now I am the Vice-President of a club named Paryavaran for entire 3 campuses and also got promoted as NSS incharge of our college" 
         ]
     },
     4: {
-        gpa: "Pending", // Replace with your real 4th Year CGPA when ready
+        gpa: "Pending", // Replace with your final CGPA when ready
         title: "FINAL YEAR ADVANCEMENTS",
         achievements: [
             "In Progress to Achievements"
@@ -166,36 +167,50 @@ const academicData = {
     }
 };
 
+// Expose the switch routine to the global browser window scope immediately
 window.switchYear = function(yearNumber, buttonElement) {
-    // Remove active markers from all sibling nodes
+    // Drop active highlight class from all year node buttons
     document.querySelectorAll('.year-node').forEach(node => node.classList.remove('active'));
-    // Mark clicked button as active dashboard node
-    buttonElement.classList.add('active');
+    
+    // Highlight the clicked year node button
+    if (buttonElement) {
+        buttonElement.classList.add('active');
+    }
     
     const screen = document.getElementById('academic-display-screen');
+    if (!screen) return;
     
-    // Add visual structural transition out
-    screen.classList.add('fade-out-effect');
+    // Smooth fade visual exit transition
+    screen.style.opacity = '0';
+    screen.style.transform = 'translateY(5px)';
     
     setTimeout(() => {
         const data = academicData[yearNumber];
-        document.getElementById('display-gpa').innerText = data.gpa;
-        document.getElementById('display-year-title').innerText = data.title;
+        if (!data) return;
         
-        // Rebuild list nodes under glass matrix
+        // Push raw values directly into the target DOM layout elements
+        const gpaElement = document.getElementById('display-gpa');
+        const titleElement = document.getElementById('display-year-title');
         const listContainer = document.getElementById('display-achievements');
-        listContainer.innerHTML = '';
-        data.achievements.forEach(item => {
-            const li = document.createElement('li');
-            li.innerText = item;
-            listContainer.appendChild(li);
-        });
         
-        // Visual structural transition back in
-        screen.classList.remove('fade-out-effect');
-    }, 200);
+        if (gpaElement) gpaElement.innerText = data.gpa;
+        if (titleElement) titleElement.innerText = data.title;
+        
+        if (listContainer) {
+            listContainer.innerHTML = '';
+            data.achievements.forEach(item => {
+                const li = document.createElement('li');
+                li.innerText = item;
+                listContainer.appendChild(li);
+            });
+        }
+        
+        // Smooth fade visual entrance transition
+        screen.style.opacity = '1';
+        screen.style.transform = 'translateY(0px)';
+    }, 180);
 };
-    // ===============================
+   // ===============================
     // PROJECT CARD GLOW
     // ===============================
     const cards = document.querySelectorAll(".project-card");
