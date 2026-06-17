@@ -124,7 +124,77 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+// ==========================================
+// INTERACTIVE ACADEMIC TIMELINE INTERNALS
+// ==========================================
+const academicData = {
+    1: {
+        gpa: "7.54", // Replace with your real 1st Year CGPA
+        title: "FIRST YEAR METRICS",
+        achievements: [
+            "Maintained an exceptional academic standard over fundamental core courses.",
+            "Built foundational understanding of Object-Oriented Programming structures and Engineering Mathematics.",
+            "Engaged in core logic optimization and foundational algorithm frameworks."
+           "Joined into NSS and awarded many awards and felicitations from my college"
+        ]
+    },
+    2: {
+        gpa: "7.43", // Replace with your real 2nd Year CGPA
+        title: "SECOND YEAR METRICS",
+        achievements: [
+            "Specialized in advanced Data Structures, Object-Oriented Analysis (OOSE), and Database Management Systems.",
+            "Mastered core full-stack web development integration frameworks using Python and Flask.",
+            "Lead a Contigent of 21 members in my college Parade During August 15 as part of NSS"
+        ]
+    },
+    3: {
+        gpa: "Final Sem results Pendinf", // Replace with your real 3rd Year CGPA
+        title: "THIRD YEAR METRICS",
+        achievements: [
+            "Deepened research expertise across Deep Learning architectures and Natural Language Processing vectors.",
+            "Engineered secure decentralized application architectures and optimized API delivery layers.",
+            "Got selected for prestigeous camp ever held at IITG, Honoured by Governor of Assam"
+           "Now I am the Vice-President of a club named Paryavaran for entire 3 campuses and also got promoted as NSS incharge of our college"
+        ]
+    },
+    4: {
+        gpa: "Pending", // Replace with your real 4th Year CGPA when ready
+        title: "FINAL YEAR ADVANCEMENTS",
+        achievements: [
+            "In Progress to Achievements"
+        ]
+    }
+};
 
+window.switchYear = function(yearNumber, buttonElement) {
+    // Remove active markers from all sibling nodes
+    document.querySelectorAll('.year-node').forEach(node => node.classList.remove('active'));
+    // Mark clicked button as active dashboard node
+    buttonElement.classList.add('active');
+    
+    const screen = document.getElementById('academic-display-screen');
+    
+    // Add visual structural transition out
+    screen.classList.add('fade-out-effect');
+    
+    setTimeout(() => {
+        const data = academicData[yearNumber];
+        document.getElementById('display-gpa').innerText = data.gpa;
+        document.getElementById('display-year-title').innerText = data.title;
+        
+        // Rebuild list nodes under glass matrix
+        const listContainer = document.getElementById('display-achievements');
+        listContainer.innerHTML = '';
+        data.achievements.forEach(item => {
+            const li = document.createElement('li');
+            li.innerText = item;
+            listContainer.appendChild(li);
+        });
+        
+        // Visual structural transition back in
+        screen.classList.remove('fade-out-effect');
+    }, 200);
+};
     // ===============================
     // PROJECT CARD GLOW
     // ===============================
