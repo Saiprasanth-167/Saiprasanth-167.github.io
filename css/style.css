@@ -310,6 +310,25 @@ body{
   box-shadow: 0 0 10px #00e5ff;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+/* Hide all academic year content by default */
+.academic-year-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Show only the active academic year */
+.academic-year-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Styling for the active tab button to show it's selected */
+.tab-button.active {
+  background-color: #00d2ff; /* Or your preferred theme accent color */
+  color: #000;
+  font-weight: bold;
+}
 /* ==========================
    PROJECTS
 ========================== */
