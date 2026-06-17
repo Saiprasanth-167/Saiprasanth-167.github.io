@@ -197,63 +197,36 @@ const academicData = {
 };
 
 // Expose the switch routine to the global browser window scope immediately
-window.switchYear = function(yearNumber, buttonElement) {
-  // Drop active highlight class from all year node layouts
-  document.querySelectorAll('.year-node').forEach(node => node.classList.remove('active'));
+   window.switchYear = function (yearId) {
+  // 1. Hide all academic content blocks
+  const contents = document.querySelectorAll('.academic-year-content');
+  contents.forEach(content => content.classList.remove('active'));
 
-  // Highlight the target element node context directly
-  if (buttonElement) {
-    buttonElement.classList.add('active');
+  // 2. Deactivate background styles on all tab buttons 
+  const buttons = document.querySelectorAll('.tab-navigation .tab-button');
+  buttons.forEach(button => button.classList.remove('active'));
+
+  // 3. Reveal the specifically clicked content block
+  const targetContent = document.getElementById(yearId);
+  if (targetContent) {
+    targetContent.classList.add('active');
   }
-
-  const screen = document.getElementById('academic-display-screen');
-  if (!screen) return;
-
-  // Smooth fade visual exit transition
-  screen.style.opacity = '0';
-  screen.style.transform = 'translateY(5px)';
-
-  setTimeout(() => {
-    const data = academicData[yearNumber];
-    if (!data) return;
-
-    // Push raw values directly into the target DOM layout elements
-    const gpaElement = document.getElementById('display-gpa');
-    const titleElement = document.getElementById('display-year-title');
-    const listContainer = document.getElementById('display-achievements');
-
-    if (gpaElement) gpaElement.innerText = data.gpa;
-    if (titleElement) titleElement.innerText = data.title;
-
-    if (listContainer) {
-      listContainer.innerHTML = '';
-      data.achievements.forEach(item => {
-        const li = document.createElement('li');
-        li.innerText = item;
-        listContainer.appendChild(li);
-      });
-    }
-
-    // Smooth fade visual entrance transition
-    screen.style.opacity = '1';
-    screen.style.transform = 'translateY(0px)';
-  }, 180);
+  
+  // 4. Find the button that was clicked and highlight it
+  const clickedButton = document.querySelector(`button[onclick="switchYear('${yearId}')"]`);
+  if (clickedButton) {
+    clickedButton.classList.add('active');
+  }
 };
-});
-}
 
-console.log(`
-=====================================
-Sai Prasanth Portfolio
-=====================================
-`);
+console.log(`===================================== Sai Prasanth Portfolio =====================================`);
 
 // ==========================================
 // INITIAL SETUP ON RENDER
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
-  const firstYearBtn = document.querySelector('.year-node.year-1') || document.querySelector('.year-node');
-  if (firstYearBtn) {
-    window.switchYear(1, firstYearBtn);
+  // Automatically open the 1st Year tab on page load
+  if (typeof window.switchYear === "function") {
+    window.switchYear('year1');
   }
 });
