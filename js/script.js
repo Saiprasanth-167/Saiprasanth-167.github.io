@@ -134,35 +134,35 @@ const academicData = {
         achievements: [
             "Maintained an exceptional academic standard over fundamental core courses.",
             "Built foundational understanding of Object-Oriented Programming models and engineering math.",
-            "Engaged in logic building and algorithm development layouts."
-           "Joined into NSS and awarded many awards and felicitations from my college"
+            "Engaged in logic building and algorithm development layouts.",
+            "Joined into NSS and awarded many awards and felicitations from my college."
         ]
     },
     2: {
-        gpa: "7.43", // Replace with your real 2nd Year CGPA if different
+        gpa: "7.43", 
         title: "SECOND YEAR METRICS",
         achievements: [
             "Specialized in Advanced Data Structures, Object-Oriented Software Engineering (OOSE), and Database Frameworks.",
             "Mastered full-stack web integration architectures utilizing Python and Flask environments.",
-            "Explored practical applications of classical ciphers and K-Means clustering engines."
-           "Lead a Contingent of 21 members in my college Parade During August 15 as part of NSS"
+            "Explored practical applications of classical ciphers and K-Means clustering engines.",
+            "Led a Contingent of 21 members in my college Parade During August 15 as part of NSS."
         ]
     },
     3: {
-        gpa: "Final Sem Results Pending", // Replace with your real 3rd Year CGPA if different
+        gpa: "Final Sem Results Pending", 
         title: "THIRD YEAR METRICS",
         achievements: [
             "Deepened development expertise across Progressive Web Application (PWA) deployment frameworks.",
             "Optimized backend logic distribution layouts and structural database queries.",
-            "Got selected for prestigeous camp ever held at IITG, Honoured by Governor of Assam"
-            "Now I am the Vice-President of a club named Paryavaran for entire 3 campuses and also got promoted as NSS incharge of our college" 
+            "Got selected for prestigious camp ever held at IITG, Honoured by Governor of Assam.",
+            "Now I am the Vice-President of a club named Paryavaran for entire 3 campuses and also got promoted as NSS incharge of our college."
         ]
     },
     4: {
-        gpa: "Pending", // Replace with your final CGPA when ready
+        gpa: "Pending", 
         title: "FINAL YEAR ADVANCEMENTS",
         achievements: [
-            "In Progress to Achievements"
+            "In Progress to Achievements."
         ]
     }
 };
@@ -209,8 +209,7 @@ window.switchYear = function(yearNumber, buttonElement) {
         screen.style.opacity = '1';
         screen.style.transform = 'translateY(0px)';
     }, 180);
-};
-   // ===============================
+};   // ===============================
     // PROJECT CARD GLOW
     // ===============================
     const cards = document.querySelectorAll(".project-card");
