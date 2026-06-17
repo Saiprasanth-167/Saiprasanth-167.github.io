@@ -519,6 +519,32 @@ body{
     0% { border-left-color: var(--cyan); }
     100% { border-left-color: var(--purple); }
 }
+/* ==========================================
+   DYNAMIC TIMELINE DOT & STEM CORRECTIONS
+========================================== */
+/* Force the parent timeline item to dynamically scale its height with smooth transitions */
+.timeline-item {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: max-height, padding;
+}
+
+/* Make sure the vertical connector line tracks all the way down to the bottom of the card */
+.timeline::before {
+    height: 100%;
+    transition: height 0.5s ease-in-out;
+}
+
+/* Adjust the sticky position index of the dot so it centers beautifully next to the expanding card */
+.timeline-dot {
+    top: 30px; /* Aligns perfectly with the B.Tech heading */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Subtle accent effect: Add an extra pulse to the dot when an interactive panel drops down */
+.timeline-item:has(.sub-year-panel.active) .timeline-dot {
+    box-shadow: 0 0 25px var(--cyan), 0 0 10px var(--purple);
+    transform: scale(1.15);
+}
 /* ==========================
    PROJECTS
 ========================== */
