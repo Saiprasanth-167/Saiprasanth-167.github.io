@@ -151,12 +151,57 @@
 
                         <div class="cyber-tabs-container">
                             <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--purple); margin-bottom: 12px;">Select Academic Year</h4>
-                            <div class="year-nodes-row">
-                                <button class="year-node active" onclick="toggleYearTimeline(1, this)">1st Yr</button>
-                                <button class="year-node" onclick="toggleYearTimeline(2, this)">2nd Yr</button>
-                                <button class="year-node" onclick="toggleYearTimeline(3, this)">3rd Yr</button>
-                                <button class="year-node" onclick="toggleYearTimeline(4, this)">4th Yr</button>
-                            </div>
+                           <div class="tab-navigation">
+                              <button class="tab-button active" onclick="switchYear('year1')">1st Yr</button>
+                              <button class="tab-button" onclick="switchYear('year2')">2nd Yr</button>
+                              <button class="tab-button" onclick="switchYear('year3')">3rd Yr</button>
+                              <button class="tab-button" onclick="switchYear('year4')">4th Yr</button>
+                          </div>
+
+<div class="academic-contents">
+  
+  <div id="year1" class="academic-year-content active">
+    <span class="timeline-date">CGPA: 7.54</span>
+    <h4>FIRST YEAR CORE FOUNDATIONS</h4>
+    <ul>
+      <li>Maintained an exceptional academic standard over fundamental core courses.</li>
+      <li>Built foundational understanding of Object-Oriented Programming models and engineering math.</li>
+      <li>Engaged in logic building and algorithm development layouts.</li>
+      <li>Joined into NSS and awarded many awards and felicitations from my college.</li>
+    </ul>
+  </div>
+
+  <div id="year2" class="academic-year-content">
+    <span class="timeline-date">CGPA: 7.43</span>
+    <h4>SECOND YEAR SYSTEMS ENGINEERING</h4>
+    <ul>
+      <li>Specialized in Advanced Data Structures, Object-Oriented Software Engineering (OOSE), and Database Frameworks.</li>
+      <li>Mastered full-stack web integration architectures utilizing Python and Flask environments.</li>
+      <li>Explored practical applications of classical ciphers and K-Means clustering engines.</li>
+      <li>Led a Contingent of 21 members in my college Parade During August 15 as part of NSS.</li>
+    </ul>
+  </div>
+
+  <div id="year3" class="academic-year-content">
+    <span class="timeline-date">Pending</span>
+    <h4>THIRD YEAR ADVANCED RESEARCH</h4>
+    <ul>
+      <li>Deepened development expertise across Progressive Web Application (PWA) deployment frameworks.</li>
+      <li>Optimized backend logic distribution layouts and structural database queries.</li>
+      <li>Got selected for prestigious camp ever held at IITG, Honoured by Governor of Assam.</li>
+      <li>Now I am the Vice-President of a club named Paryavaran for entire 3 campuses and also got promoted as NSS incharge of our college.</li>
+    </ul>
+  </div>
+
+  <div id="year4" class="academic-year-content">
+    <span class="timeline-date">Pending</span>
+    <h4>FINAL YEAR PRACTICAL ADVANCEMENTS</h4>
+    <ul>
+      <li>In Progress to Achievements.</li>
+    </ul>
+  </div>
+
+</div>
                         </div>
 
                         <div class="nested-timelines-container">
