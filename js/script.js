@@ -48,27 +48,37 @@ document.addEventListener('DOMContentLoaded', () => {
             observer.observe(element);
         });
     }
-
+   // ===============================
+    // HERO TYPEWRITER (SAFE STRUCTURAL MODE)
     // ===============================
-    // HERO TYPEWRITER
-    // ===============================
-    const heroSubtitle = document.querySelector(".hero p");
+    const heroSubtitle = document.querySelector(".cyber-typewriter");
     if (heroSubtitle) {
-        const originalText = heroSubtitle.innerText;
-        heroSubtitle.innerText = "";
-        let index = 0;
-
-        function typeWriter() {
-            if (index < originalText.length) {
-                heroSubtitle.innerText += originalText.charAt(index);
-                index++;
-                setTimeout(typeWriter, 20);
+        const targetHTML = heroSubtitle.innerHTML.trim();
+        heroSubtitle.innerHTML = ""; // Flush the placeholder initial markup
+        heroSubtitle.style.opacity = "1";
+        
+        let currentProgress = 0;
+        
+        function typeWriterEngine() {
+            if (currentProgress < targetHTML.length) {
+                // Skip the entire HTML tag if encountered (<br> or <span>) to keep formatting intact
+                if (targetHTML.charAt(currentProgress) === '<') {
+                    currentProgress = targetHTML.indexOf('>', currentProgress) + 1;
+                } else {
+                    currentProgress++;
+                }
+                heroSubtitle.innerHTML = targetHTML.substring(0, currentProgress);
+                setTimeout(typeWriterEngine, 15);
             }
         }
-        typeWriter();
+        
+        if (document.readyState === "complete") {
+            typeWriterEngine();
+        } else {
+            window.addEventListener("load", typeWriterEngine);
+        }
     }
-
-    // ===============================
+     // ===============================
     // CYBERPUNK PARTICLES
     // ===============================
     const particleContainer = document.querySelector(".bg-animation");
