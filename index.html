@@ -133,8 +133,7 @@
         </div>
 
     </section>
-<!--Education-->
-    <section id="education" class="section">
+<section id="education" class="section">
             <h2 class="section-title">Educational Qualifications</h2>
             <div class="timeline">
                 
@@ -151,28 +150,75 @@
                         </ul>
 
                         <div class="cyber-tabs-container">
-                            <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--purple); margin-bottom: 12px;">Select Academic Academic Year</h4>
+                            <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--purple); margin-bottom: 12px;">Select Academic Year</h4>
                             <div class="year-nodes-row">
-                                <button class="year-node active" onclick="switchYear(1, this)">1st Yr</button>
-                                <button class="year-node" onclick="switchYear(2, this)">2nd Yr</button>
-                                <button class="year-node" onclick="switchYear(3, this)">3rd Yr</button>
-                                <button class="year-node" onclick="switchYear(4, this)">4th Yr</button>
+                                <button class="year-node active" onclick="toggleYearTimeline(1, this)">1st Yr</button>
+                                <button class="year-node" onclick="toggleYearTimeline(2, this)">2nd Yr</button>
+                                <button class="year-node" onclick="toggleYearTimeline(3, this)">3rd Yr</button>
+                                <button class="year-node" onclick="toggleYearTimeline(4, this)">4th Yr</button>
                             </div>
                         </div>
-                        <div id="academic-display-screen" style="transition: all 0.2s ease;">
-    <div class="screen-header">
-        <span class="gpa-badge">CGPA: <strong id="display-gpa">7.54</strong></span>
-        <span id="display-year-title" class="year-tag">FIRST YEAR METRICS</span>
-    </div>
-    <ul id="display-achievements" class="cyber-list">
-        <li>Maintained an exceptional academic standard over fundamental core courses.</li>
-        <li>Built foundational understanding of Object-Oriented Programming models and engineering math.</li>
-        <li>Engaged in logic building and algorithm development layouts.</li>
-        <li>Joined into NSS and awarded many awards and felicitations from my college.</li>
-    </ul>
-</div>
-                     
-                    </div>
+
+                        <div class="nested-timelines-container">
+                            
+                            <div id="year-panel-1" class="sub-year-panel active">
+                                <div class="sub-timeline-card">
+                                    <div class="sub-header">
+                                        <span class="gpa-tag">CGPA: 7.54</span>
+                                        <span class="panel-title">FIRST YEAR CORE FOUNDATIONS</span>
+                                    </div>
+                                    <ul class="sub-achievements-list">
+                                        <li>Maintained an exceptional academic standard over fundamental core courses.</li>
+                                        <li>Built foundational understanding of Object-Oriented Programming models and engineering math.</li>
+                                        <li>Engaged in logic building and algorithm development layouts.</li>
+                                        <li>Joined into NSS and awarded many awards and felicitations from my college.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div id="year-panel-2" class="sub-year-panel">
+                                <div class="sub-timeline-card">
+                                    <div class="sub-header">
+                                        <span class="gpa-tag">CGPA: 7.43</span>
+                                        <span class="panel-title">SECOND YEAR SYSTEMS ENGINEERING</span>
+                                    </div>
+                                    <ul class="sub-achievements-list">
+                                        <li>Specialized in Advanced Data Structures, Object-Oriented Software Engineering (OOSE), and Database Frameworks.</li>
+                                        <li>Mastered full-stack web integration architectures utilizing Python and Flask environments.</li>
+                                        <li>Explored practical applications of classical ciphers and K-Means clustering engines.</li>
+                                        <li>Led a Contingent of 21 members in my college Parade During August 15 as part of NSS.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div id="year-panel-3" class="sub-year-panel">
+                                <div class="sub-timeline-card">
+                                    <div class="sub-header">
+                                        <span class="gpa-tag">Pending</span>
+                                        <span class="panel-title">THIRD YEAR ADVANCED RESEARCH</span>
+                                    </div>
+                                    <ul class="sub-achievements-list">
+                                        <li>Deepened development expertise across Progressive Web Application (PWA) deployment frameworks.</li>
+                                        <li>Optimized backend logic distribution layouts and structural database queries.</li>
+                                        <li>Got selected for prestigious camp ever held at IITG, Honoured by Governor of Assam.</li>
+                                        <li>Now I am the Vice-President of a club named Paryavaran for entire 3 campuses and also got promoted as NSS incharge of our college.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div id="year-panel-4" class="sub-year-panel">
+                                <div class="sub-timeline-card">
+                                    <div class="sub-header">
+                                        <span class="gpa-tag">Pending</span>
+                                        <span class="panel-title">FINAL YEAR PRACTICAL ADVANCEMENTS</span>
+                                    </div>
+                                    <ul class="sub-achievements-list">
+                                        <li>In Progress to Achievements.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div> </div>
                 </div>
 
             </div>
