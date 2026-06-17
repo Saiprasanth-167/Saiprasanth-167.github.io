@@ -533,11 +533,14 @@ body{
     height: 100%;
     transition: height 0.5s ease-in-out;
 }
-
 /* Adjust the sticky position index of the dot so it centers beautifully next to the expanding card */
 .timeline-dot {
-    top: 30px; /* Aligns perfectly with the B.Tech heading */
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: absolute; /* Crucial: Allows JS to dynamically control vertical movement context */
+  left: 15px;         /* Retains your original horizontal placement next to the line */
+  top: 30px;          /* Initial starting placement alignment */
+  
+  /* Smooth movement for 'top' positioning updates */
+  transition: top 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Subtle accent effect: Add an extra pulse to the dot when an interactive panel drops down */
