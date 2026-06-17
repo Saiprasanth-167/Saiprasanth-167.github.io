@@ -299,35 +299,149 @@ body{
    TIMELINE
 ========================== */
 
-.timeline-dot {
-  position: absolute;
-  top: 30px; 
-  left: 15px;
-  width: 20px;
-  height: 20px;
-  background-color: #00e5ff;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #00e5ff;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-/* Hide all academic year content by default */
-.academic-year-content {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
 }
 
-/* Show only the active academic year */
-.academic-year-content.active {
-  display: block;
-  opacity: 1;
+.timeline::before{
+    content:"";
+    position:absolute;
+
+    left:25px;
+    top:0;
+
+    width:3px;
+    height:100%;
+
+    background:var(--cyan);
 }
 
-/* Styling for the active tab button to show it's selected */
-.tab-button.active {
-  background-color: #00d2ff; /* Or your preferred theme accent color */
-  color: #000;
-  font-weight: bold;
+.timeline-item{
+    position:relative;
+    padding-left:70px;
+}
+
+.timeline-dot{
+    position:absolute;
+    left:15px;
+    top:20px;
+
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    background:var(--cyan);
+
+    box-shadow:var(--shadow-cyan);
+}
+/* ==========================================
+   HIGH-TECH INTERACTIVE EDUCATION LAYOUT
+========================================== */
+.cyber-tabs-container {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.year-nodes-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.year-node {
+    flex: 1;
+    background: rgba(13, 18, 36, 0.6);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 10px 5px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.year-node:hover {
+    color: var(--cyan);
+    border-color: var(--cyan);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+.year-node.active {
+    background: rgba(0, 229, 255, 0.1);
+    border-color: var(--cyan);
+    color: #ffffff;
+    text-shadow: 0 0 8px var(--cyan);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+}
+
+/* Dynamic Output Screen */
+#academic-display-screen {
+    margin-top: 20px;
+    background: rgba(5, 8, 22, 0.8);
+    border-left: 3px solid var(--cyan);
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    transition: all 0.4s ease;
+    animation: screenPulse 4s infinite alternate;
+}
+
+.screen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.gpa-badge {
+    background: linear-gradient(135deg, var(--cyan), var(--purple));
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-weight: 500;
+    box-shadow: var(--shadow-cyan);
+}
+
+.year-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+}
+
+.cyber-list {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.cyber-list li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    list-style-type: square;
+}
+
+/* Subtle fade effect when switching data nodes */
+.fade-out-effect {
+    opacity: 0;
+    transform: translateY(5px);
+}
+
+@keyframes screenPulse {
+    0% { border-left-color: var(--cyan); }
+    100% { border-left-color: var(--purple); }
 }
 /* ==========================
    PROJECTS
