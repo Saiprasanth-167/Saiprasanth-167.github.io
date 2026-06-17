@@ -2,26 +2,7 @@
    CYBERPUNK AI PORTFOLIO
    Sai Prasanth
 ====================================== */
-// ==========================================
-// STANDALONE NESTED TIMELINE CONTROLLER
-// ==========================================
-window.toggleYearTimeline = function(yearNumber, buttonElement) {
-    // 1. Remove active markers from all selector row buttons
-    document.querySelectorAll('.year-node').forEach(btn => btn.classList.remove('active'));
-    
-    // 2. Hide all open year text boards
-    document.querySelectorAll('.sub-year-panel').forEach(panel => {
-        panel.classList.remove('active');
-    });
-    
-    // 3. Mount active flags onto selected node structures
-    if (buttonElement) buttonElement.classList.add('active');
-    
-    const activePanel = document.getElementById(`year-panel-${yearNumber}`);
-    if (activePanel) {
-        activePanel.classList.add('active');
-    }
-};
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===============================
@@ -153,80 +134,114 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-   // ==========================================
+// ==========================================
 // INTERACTIVE ACADEMIC DATA DICTIONARY
 // ==========================================
 const academicData = {
-  1: {
-    gpa: "CGPA: 7.54",
-    title: "FIRST YEAR CORE FOUNDATIONS",
-    achievements: [
-      "Maintained an exceptional academic standard over fundamental core courses.",
-      "Built foundational understanding of Object-Oriented Programming models and engineering math.",
-      "Engaged in logic building and algorithm development layouts.",
-      "Joined into NSS and awarded many awards and felicitations from my college."
-    ]
-  },
-  2: {
-    gpa: "CGPA: 7.43",
-    title: "SECOND YEAR SYSTEMS ENGINEERING",
-    achievements: [
-      "Specialized in Advanced Data Structures, Object-Oriented Software Engineering (OOSE), and Database Frameworks.",
-      "Mastered full-stack web integration architectures utilizing Python and Flask environments.",
-      "Explored practical applications of classical ciphers and K-Means clustering engines.",
-      "Led a Contingent of 21 members in my college Parade During August 15 as part of NSS."
-    ]
-  },
-  3: {
-    gpa: "Pending",
-    title: "THIRD YEAR ADVANCED RESEARCH",
-    achievements: [
-      "Deepened development expertise across Progressive Web Application (PWA) deployment frameworks.",
-      "Optimized backend logic distribution layouts and structural database queries.",
-      "Got selected for prestigious camp ever held at IITG, Honoured by Governor of Assam.",
-      "Now I am the Vice-President of a club named Paryavaran for entire 3 campuses and also got promoted as NSS incharge of our college."
-    ]
-  },
-  4: {
-    gpa: "Pending",
-    title: "FINAL YEAR PRACTICAL ADVANCEMENTS",
-    achievements: [
-      "In Progress to Achievements."
-    ]
-  }
+    1: {
+        gpa: "7.54", 
+        title: "FIRST YEAR METRICS",
+        achievements: [
+            "Maintained an exceptional academic standard over fundamental core courses.",
+            "Built foundational understanding of Object-Oriented Programming models and engineering math.",
+            "Engaged in logic building and algorithm development layouts.",
+            "Joined into NSS and awarded many awards and felicitations from my college."
+        ]
+    },
+    2: {
+        gpa: "7.43", 
+        title: "SECOND YEAR METRICS",
+        achievements: [
+            "Specialized in Advanced Data Structures, Object-Oriented Software Engineering (OOSE), and Database Frameworks.",
+            "Mastered full-stack web integration architectures utilizing Python and Flask environments.",
+            "Explored practical applications of classical ciphers and K-Means clustering engines.",
+            "Led a Contingent of 21 members in my college Parade During August 15 as part of NSS."
+        ]
+    },
+    3: {
+        gpa: "Final Sem Results Pending", 
+        title: "THIRD YEAR METRICS",
+        achievements: [
+            "Deepened development expertise across Progressive Web Application (PWA) deployment frameworks.",
+            "Optimized backend logic distribution layouts and structural database queries.",
+            "Got selected for prestigious camp ever held at IITG, Honoured by Governor of Assam.",
+            "Now I am the Vice-President of a club named Paryavaran for entire 3 campuses and also got promoted as NSS incharge of our college."
+        ]
+    },
+    4: {
+        gpa: "Pending", 
+        title: "FINAL YEAR ADVANCEMENTS",
+        achievements: [
+            "In Progress to Achievements."
+        ]
+    }
 };
 
 // Expose the switch routine to the global browser window scope immediately
-   window.switchYear = function (yearId) {
-  // 1. Hide all academic content blocks
-  const contents = document.querySelectorAll('.academic-year-content');
-  contents.forEach(content => content.classList.remove('active'));
+window.switchYear = function(yearNumber, buttonElement) {
+    // Drop active highlight class from all year node buttons
+    document.querySelectorAll('.year-node').forEach(node => node.classList.remove('active'));
+    
+    // Highlight the clicked year node button
+    if (buttonElement) {
+        buttonElement.classList.add('active');
+    }
+    
+    const screen = document.getElementById('academic-display-screen');
+    if (!screen) return;
+    
+    // Smooth fade visual exit transition
+    screen.style.opacity = '0';
+    screen.style.transform = 'translateY(5px)';
+    
+    setTimeout(() => {
+        const data = academicData[yearNumber];
+        if (!data) return;
+        
+        // Push raw values directly into the target DOM layout elements
+        const gpaElement = document.getElementById('display-gpa');
+        const titleElement = document.getElementById('display-year-title');
+        const listContainer = document.getElementById('display-achievements');
+        
+        if (gpaElement) gpaElement.innerText = data.gpa;
+        if (titleElement) titleElement.innerText = data.title;
+        
+        if (listContainer) {
+            listContainer.innerHTML = '';
+            data.achievements.forEach(item => {
+                const li = document.createElement('li');
+                li.innerText = item;
+                listContainer.appendChild(li);
+            });
+        }
+        
+        // Smooth fade visual entrance transition
+        screen.style.opacity = '1';
+        screen.style.transform = 'translateY(0px)';
+    }, 180);
+};   // ===============================
+    // PROJECT CARD GLOW
+    // ===============================
+    const cards = document.querySelectorAll(".project-card");
+    if (cards.length > 0) {
+        cards.forEach(card => {
+            card.addEventListener("mousemove", e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,229,255,.15), rgba(255,255,255,.03))`;
+            });
+            card.addEventListener("mouseleave", () => {
+                card.style.background = "rgba(255,255,255,.06)";
+            });
+        });
+    }
 
-  // 2. Deactivate background styles on all tab buttons 
-  const buttons = document.querySelectorAll('.tab-navigation .tab-button');
-  buttons.forEach(button => button.classList.remove('active'));
-
-  // 3. Reveal the specifically clicked content block
-  const targetContent = document.getElementById(yearId);
-  if (targetContent) {
-    targetContent.classList.add('active');
-  }
-  
-  // 4. Find the button that was clicked and highlight it
-  const clickedButton = document.querySelector(`button[onclick="switchYear('${yearId}')"]`);
-  if (clickedButton) {
-    clickedButton.classList.add('active');
-  }
-};
-
-console.log(`===================================== Sai Prasanth Portfolio =====================================`);
-
-// ==========================================
-// INITIAL SETUP ON RENDER
-// ==========================================
-document.addEventListener("DOMContentLoaded", () => {
-  // Automatically open the 1st Year tab on page load
-  if (typeof window.switchYear === "function") {
-    window.switchYear('year1');
-  }
 });
+
+console.log(`
+=====================================
+       Sai Prasanth Portfolio
+   AI Engineer | IIT Guwahati Research
+=====================================
+`);
