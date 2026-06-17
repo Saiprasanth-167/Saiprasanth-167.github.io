@@ -1,47 +1,26 @@
-/* ==========================================
-   BLOOD MOON CYBER DAY THEME
-========================================== */
-
-/* Default Dark Cyberpunk Mode */
 :root {
-    --bg-color: #0a0a0c;
-    --card-bg: rgba(255, 255, 255, 0.06);
-    --primary-glow: #00e5ff; /* Cyan */
-    --text-color: #ffffff;
-    --accent-color: #7000ff;
+    --bg: #050816;
+    --bg-secondary: #0d1224;
+    --text: #ffffff;
+    --text-muted: #b7bfd4;
+    --cyan: #00e5ff;
+    --purple: #a855f7;
+    --glass: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.12);
+    --shadow-cyan: 0 0 20px rgba(0, 229, 255, 0.4);
+    --shadow-purple: 0 0 20px rgba(168, 85, 247, 0.4);
 }
 
-/* Crimson Blood Moon Alternate Mode */
-body.blood-moon {
-    --bg-color: #0f0202; /* Deep Obsidian Red */
-    --card-bg: rgba(139, 0, 0, 0.15); /* Translucent Blood Red */
-    --primary-glow: #ff2a2a; /* Neon Crimson */
-    --text-color: #ffe5e5; /* Soft Rose White */
-    --accent-color: #ff8800; /* Solar Flare Orange */
-    
-    /* Apply a subtle crimson tint to the entire screen background */
-    background-image: radial-gradient(circle at 50% 50%, #2a0000 0%, #0f0202 100%);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Active Blood Moon Mode Enhancements */
-body.blood-moon .glass-card, 
-body.blood-moon .project-card {
-    border: 1px solid rgba(255, 42, 42, 0.3);
-    box-shadow: 0 0 15px rgba(255, 42, 42, 0.1);
-}
-
-body.blood-moon .submit-btn {
-    background: linear-gradient(135deg, #ff2a2a, #ff8800);
-    box-shadow: 0 0 15px rgba(255, 42, 42, 0.4);
-    color: #000;
-}
-
-/* Blood Moon Pulse Animation for Particles or Toggle */
-@keyframes bloodMoonPulse {
-    0% { box-shadow: 0 0 10px rgba(255, 42, 42, 0.4); }
-    50% { box-shadow: 0 0 25px rgba(255, 136, 0, 0.7); }
-    100% { box-shadow: 0 0 10px rgba(255, 42, 42, 0.4); }
+/* Ensure background grid overlay animations render natively */
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, #0d1224 0%, #050816 100%);
 }
 /* ==========================
    RESET
