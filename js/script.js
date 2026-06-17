@@ -4,26 +4,37 @@
 ====================================== */
 
 // ===============================
-// DARK / LIGHT MODE
+// BLOOD MOON CYBER TOGGLE
 // ===============================
 const themeToggle = document.getElementById("theme-toggle");
 const savedTheme = localStorage.getItem("theme");
 
-if (savedTheme === "light") {
-    document.body.classList.add("light");
-    if (themeToggle) themeToggle.textContent = "☀️";
+if (savedTheme === "blood-moon") {
+    document.body.classList.add("blood-moon");
+    if (themeToggle) themeToggle.textContent = "🌑";
 }
 
 if (themeToggle) {
     themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("light");
-        if (document.body.classList.contains("light")) {
-            localStorage.setItem("theme", "light");
-            themeToggle.textContent = "☀️";
+        document.body.classList.toggle("blood-moon");
+        
+        if (document.body.classList.contains("blood-moon")) {
+            localStorage.setItem("theme", "blood-moon");
+            themeToggle.textContent = "🌑";
+            changeParticleColor("#ff2a2a"); 
         } else {
             localStorage.setItem("theme", "dark");
             themeToggle.textContent = "🌙";
+            changeParticleColor("#00e5ff"); 
         }
+    });
+}
+
+function changeParticleColor(colorString) {
+    const particles = document.querySelectorAll(".particle");
+    particles.forEach(p => {
+        p.style.backgroundColor = colorString;
+        p.style.boxShadow = `0 0 10px ${colorString}`;
     });
 }
 
@@ -98,6 +109,10 @@ if (particleContainer) {
         particle.style.height = `${size}px`;
         particle.style.left = `${Math.random() * 100}%`;
         particle.style.top = `${Math.random() * 100}%`;
+        
+        // Dynamically initialize particle colors based on current active theme
+        particle.style.background = document.body.classList.contains("blood-moon") ? "#ff2a2a" : "#00e5ff";
+        
         particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
         particle.style.animationDelay = `${Math.random() * 5}s`;
         particleContainer.appendChild(particle);
@@ -139,7 +154,7 @@ if (sections.length > 0 && navLinks.length > 0) {
 }
 
 // ===============================
-// PROJECT CARD GLOW
+// PROJECT CARD GLOW (COLOR ADAPTIVE)
 // ===============================
 const cards = document.querySelectorAll(".project-card");
 cards.forEach(card => {
@@ -147,16 +162,18 @@ cards.forEach(card => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,229,255,.15), rgba(255,255,255,.05))`;
+        
+        const glowColor = document.body.classList.contains("blood-moon") 
+            ? "rgba(255, 42, 42, 0.2)" 
+            : "rgba(0, 229, 255, 0.15)";
+            
+        card.style.background = `radial-gradient(circle at ${x}px ${y}px, ${glowColor}, rgba(255,255,255,.03))`;
     });
     card.addEventListener("mouseleave", () => {
         card.style.background = "rgba(255,255,255,.06)";
     });
 });
 
-// ===============================
-// CONSOLE MESSAGE
-// ===============================
 console.log(`
 =====================================
        Sai Prasanth Portfolio
