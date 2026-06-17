@@ -158,8 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 const academicData = {
   1: {
-    gpa: "7.54",
-    title: "FIRST YEAR METRICS",
+    gpa: "CGPA: 7.54",
+    title: "FIRST YEAR CORE FOUNDATIONS",
     achievements: [
       "Maintained an exceptional academic standard over fundamental core courses.",
       "Built foundational understanding of Object-Oriented Programming models and engineering math.",
@@ -168,8 +168,8 @@ const academicData = {
     ]
   },
   2: {
-    gpa: "7.43",
-    title: "SECOND YEAR METRICS",
+    gpa: "CGPA: 7.43",
+    title: "SECOND YEAR SYSTEMS ENGINEERING",
     achievements: [
       "Specialized in Advanced Data Structures, Object-Oriented Software Engineering (OOSE), and Database Frameworks.",
       "Mastered full-stack web integration architectures utilizing Python and Flask environments.",
@@ -178,8 +178,8 @@ const academicData = {
     ]
   },
   3: {
-    gpa: "Final Sem Results Pending",
-    title: "THIRD YEAR METRICS",
+    gpa: "Pending",
+    title: "THIRD YEAR ADVANCED RESEARCH",
     achievements: [
       "Deepened development expertise across Progressive Web Application (PWA) deployment frameworks.",
       "Optimized backend logic distribution layouts and structural database queries.",
@@ -189,12 +189,14 @@ const academicData = {
   },
   4: {
     gpa: "Pending",
-    title: "FINAL YEAR ADVANCEMENTS",
+    title: "FINAL YEAR PRACTICAL ADVANCEMENTS",
     achievements: [
       "In Progress to Achievements."
     ]
   }
 };
+
+// Expose the switch routine to the global browser window scope immediately
 window.switchYear = function(yearNumber, buttonElement) {
   // Drop active highlight class from all year node layouts
   document.querySelectorAll('.year-node').forEach(node => node.classList.remove('active'));
@@ -237,23 +239,7 @@ window.switchYear = function(yearNumber, buttonElement) {
     screen.style.transform = 'translateY(0px)';
   }, 180);
 };
-
-// ===============================
-// PROJECT CARD GLOW
-// ===============================
-const cards = document.querySelectorAll(".project-card");
-if (cards.length > 0) {
-  cards.forEach(card => {
-    card.addEventListener("mousemove", e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,229,255,.15), rgba(255,255,255,.03))`;
-    });
-    card.addEventListener("mouseleave", () => {
-      card.style.background = "rgba(255,255,255,.06)";
-    });
- });
+});
 }
 
 console.log(`
