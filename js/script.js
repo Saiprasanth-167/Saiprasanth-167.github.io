@@ -195,7 +195,6 @@ const academicData = {
     ]
   }
 };
-// Expose the switch routine to the global browser window scope immediately
 window.switchYear = function(yearNumber, buttonElement) {
   // Drop active highlight class from all year node layouts
   document.querySelectorAll('.year-node').forEach(node => node.classList.remove('active'));
