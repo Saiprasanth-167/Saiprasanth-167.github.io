@@ -195,29 +195,14 @@ const academicData = {
     ]
   }
 };
+// Expose the switch routine to the global browser window scope immediately
 window.switchYear = function(yearNumber, buttonElement) {
-  // Drop active highlight class from all your year buttons
-  document.querySelectorAll('.year-1, .year-2, .year-3, .year-4').forEach(node => node.classList.remove('active'));
+  // Drop active highlight class from all year node layouts
+  document.querySelectorAll('.year-node').forEach(node => node.classList.remove('active'));
 
-  // Highlight the clicked year button
+  // Highlight the target element node context directly
   if (buttonElement) {
     buttonElement.classList.add('active');
-    
-    // --- DYNAMIC DOT POSITIONING LOGIC ---
-    const timelineDot = document.querySelector('.timeline-dot');
-    const timelineTrack = document.querySelector('.timeline-track');
-    
-    if (timelineDot && timelineTrack) {
-      const trackRect = timelineTrack.getBoundingClientRect();
-      const btnRect = buttonElement.getBoundingClientRect();
-      
-      // Calculate where the center of the button is relative to the top of the track
-      const buttonCenterY = (btnRect.top + btnRect.height / 2) - trackRect.top;
-      
-      // Center the dot vertically on that coordinate (subtracting half of dot height, e.g., 10px)
-      const dotHalfHeight = timelineDot.offsetHeight / 2 || 10; 
-      timelineDot.style.top = `${buttonCenterY - dotHalfHeight}px`;
-    }
   }
 
   const screen = document.getElementById('academic-display-screen');
@@ -248,7 +233,7 @@ window.switchYear = function(yearNumber, buttonElement) {
       });
     }
 
- // Smooth fade visual entrance transition
+    // Smooth fade visual entrance transition
     screen.style.opacity = '1';
     screen.style.transform = 'translateY(0px)';
   }, 180);
