@@ -248,7 +248,7 @@ window.switchYear = function(yearNumber, buttonElement) {
       });
     }
 
-    // Smooth fade visual entrance transition
+ // Smooth fade visual entrance transition
     screen.style.opacity = '1';
     screen.style.transform = 'translateY(0px)';
   }, 180);
@@ -275,6 +275,5 @@ if (cards.length > 0) {
 console.log(`
 =====================================
 Sai Prasanth Portfolio
-AI Engineer | IIT Guwahati Research
 =====================================
 `);
