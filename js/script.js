@@ -1,50 +1,14 @@
 /* ======================================
-   CYBERPUNK AI PORTFOLIO - BLOOD MOON
+   CYBERPUNK AI PORTFOLIO
    Sai Prasanth
 ====================================== */
 
-// Secure initialization to protect the browser render engine
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===============================
-    // HELPER ENGINE FOR PARTICLES
+    // DARK MODE BY DEFAULT (Toggle Removed)
     // ===============================
-    function changeParticleColor(colorString) {
-        const particles = document.querySelectorAll(".particle");
-        if (particles.length > 0) {
-            particles.forEach(p => {
-                p.style.backgroundColor = colorString;
-                p.style.boxShadow = `0 0 10px ${colorString}`;
-            });
-        }
-    }
-
-    // ===============================
-    // BLOOD MOON CYBER TOGGLE
-    // ===============================
-    const themeToggle = document.getElementById("theme-toggle");
-    const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme === "blood-moon") {
-        document.body.classList.add("blood-moon");
-        if (themeToggle) themeToggle.textContent = "🌑";
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("blood-moon");
-            
-            if (document.body.classList.contains("blood-moon")) {
-                localStorage.setItem("theme", "blood-moon");
-                themeToggle.textContent = "🌑";
-                changeParticleColor("#ff2a2a"); 
-            } else {
-                localStorage.setItem("theme", "dark");
-                themeToggle.textContent = "🌙";
-                changeParticleColor("#00e5ff"); 
-            }
-        });
-    }
+    document.body.classList.remove("light", "blood-moon");
 
     // ===============================
     // NAVBAR SCROLL EFFECT
@@ -118,8 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
             particle.style.left = `${Math.random() * 100}%`;
             particle.style.top = `${Math.random() * 100}%`;
             
-            // Initialization security layer
-            particle.style.background = document.body.classList.contains("blood-moon") ? "#ff2a2a" : "#00e5ff";
+            // Reverted back to classic neon cyan
+            particle.style.background = "#00e5ff";
             
             particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
             particle.style.animationDelay = `${Math.random() * 5}s`;
@@ -162,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ===============================
-    // PROJECT CARD GLOW (COLOR ADAPTIVE)
+    // PROJECT CARD GLOW
     // ===============================
     const cards = document.querySelectorAll(".project-card");
     if (cards.length > 0) {
@@ -171,12 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
-                const glowColor = document.body.classList.contains("blood-moon") 
-                    ? "rgba(255, 42, 42, 0.2)" 
-                    : "rgba(0, 229, 255, 0.15)";
-                    
-                card.style.background = `radial-gradient(circle at ${x}px ${y}px, ${glowColor}, rgba(255,255,255,.03))`;
+                card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,229,255,.15), rgba(255,255,255,.03))`;
             });
             card.addEventListener("mouseleave", () => {
                 card.style.background = "rgba(255,255,255,.06)";
@@ -184,4 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-}); // Secure execution envelope closure
+});
+
+console.log(`
+=====================================
+       Sai Prasanth Portfolio
+   AI Engineer | IIT Guwahati Research
+=====================================
+`);
