@@ -195,12 +195,11 @@ const academicData = {
     ]
   }
 };
-// Expose the switch routine to the global browser window scope immediately
 window.switchYear = function(yearNumber, buttonElement) {
-  // Drop active highlight class from all year node buttons
-  document.querySelectorAll('.year-node').forEach(node => node.classList.remove('active'));
+  // Drop active highlight class from all your year buttons
+  document.querySelectorAll('.year-1, .year-2, .year-3, .year-4').forEach(node => node.classList.remove('active'));
 
-  // Highlight the clicked year node button
+  // Highlight the clicked year button
   if (buttonElement) {
     buttonElement.classList.add('active');
     
@@ -215,7 +214,7 @@ window.switchYear = function(yearNumber, buttonElement) {
       // Calculate where the center of the button is relative to the top of the track
       const buttonCenterY = (btnRect.top + btnRect.height / 2) - trackRect.top;
       
-      // Center the dot horizontally on that coordinate (subtracting half of dot height)
+      // Center the dot vertically on that coordinate (subtracting half of dot height, e.g., 10px)
       const dotHalfHeight = timelineDot.offsetHeight / 2 || 10; 
       timelineDot.style.top = `${buttonCenterY - dotHalfHeight}px`;
     }
@@ -254,29 +253,28 @@ window.switchYear = function(yearNumber, buttonElement) {
     screen.style.transform = 'translateY(0px)';
   }, 180);
 };
-   // ===============================
-    // PROJECT CARD GLOW
-    // ===============================
-    const cards = document.querySelectorAll(".project-card");
-    if (cards.length > 0) {
-        cards.forEach(card => {
-            card.addEventListener("mousemove", e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,229,255,.15), rgba(255,255,255,.03))`;
-            });
-            card.addEventListener("mouseleave", () => {
-                card.style.background = "rgba(255,255,255,.06)";
-            });
-        });
-    }
 
-});
+// ===============================
+// PROJECT CARD GLOW
+// ===============================
+const cards = document.querySelectorAll(".project-card");
+if (cards.length > 0) {
+  cards.forEach(card => {
+    card.addEventListener("mousemove", e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,229,255,.15), rgba(255,255,255,.03))`;
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.background = "rgba(255,255,255,.06)";
+    });
+  });
+}
 
 console.log(`
 =====================================
-       Sai Prasanth Portfolio
-   AI Engineer | IIT Guwahati Research
+Sai Prasanth Portfolio
+AI Engineer | IIT Guwahati Research
 =====================================
 `);
