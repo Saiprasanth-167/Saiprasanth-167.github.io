@@ -2,7 +2,26 @@
    CYBERPUNK AI PORTFOLIO
    Sai Prasanth
 ====================================== */
-
+// ==========================================
+// STANDALONE NESTED TIMELINE CONTROLLER
+// ==========================================
+window.toggleYearTimeline = function(yearNumber, buttonElement) {
+    // 1. Remove active markers from all selector row buttons
+    document.querySelectorAll('.year-node').forEach(btn => btn.classList.remove('active'));
+    
+    // 2. Hide all open year text boards
+    document.querySelectorAll('.sub-year-panel').forEach(panel => {
+        panel.classList.remove('active');
+    });
+    
+    // 3. Mount active flags onto selected node structures
+    if (buttonElement) buttonElement.classList.add('active');
+    
+    const activePanel = document.getElementById(`year-panel-${yearNumber}`);
+    if (activePanel) {
+        activePanel.classList.add('active');
+    }
+};
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===============================
