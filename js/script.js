@@ -148,7 +148,7 @@ const academicData = {
         ]
     },
     3: {
-        gpa: "Final Sem results Pendinf", // Replace with your real 3rd Year CGPA
+        gpa: "Final Sem results Pending", // Replace with your real 3rd Year CGPA
         title: "THIRD YEAR METRICS",
         achievements: [
             "Deepened research expertise across Deep Learning architectures and Natural Language Processing vectors.",
