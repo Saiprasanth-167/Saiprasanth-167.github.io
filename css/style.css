@@ -522,27 +522,29 @@ body{
 /* ==========================================
    DYNAMIC TIMELINE DOT & STEM CORRECTIONS
 ========================================== */
-/* Force the parent timeline item to dynamically scale its height with smooth transitions */
-.timeline-item {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: max-height, padding;
+/* 1. Ensure the track has a relative position context */
+.timeline-track {
+  position: relative; /* CRUCIAL: Keeps the dot contained inside the line area */
+  width: 4px;
+  background-color: #223147;
+  border-radius: 2px;
 }
 
-/* Make sure the vertical connector line tracks all the way down to the bottom of the card */
-.timeline::before {
-    height: 100%;
-    transition: height 0.5s ease-in-out;
-}
-/* Adjust the sticky position index of the dot so it centers beautifully next to the expanding card */
+/* 2. Update the dot definition precisely */
 .timeline-dot {
-  position: absolute; /* Crucial: Allows JS to dynamically control vertical movement context */
-  left: 15px;         /* Retains your original horizontal placement next to the line */
-  top: 30px;          /* Initial starting placement alignment */
+  position: absolute; /* CRUCIAL: Allows JavaScript top modifications to work */
+  left: 50%;
+  transform: translateX(-50%); /* Centers the dot perfectly horizontally on the line */
+  width: 20px;
+  height: 20px;
+  background-color: #00e5ff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00e5ff;
   
-  /* Smooth movement for 'top' positioning updates */
-  transition: top 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* The Secret Sauce: Smooth interpolation for vertical movement */
+  transition: top 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  top: 0px; /* Starting alignment position */
 }
-
 /* Subtle accent effect: Add an extra pulse to the dot when an interactive panel drops down */
 .timeline-item:has(.sub-year-panel.active) .timeline-dot {
     box-shadow: 0 0 25px var(--cyan), 0 0 10px var(--purple);
