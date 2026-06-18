@@ -7,11 +7,66 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ===============================
-    // DARK MODE BY DEFAULT (Toggle Removed)
-    // ===============================
     document.body.classList.remove("light", "blood-moon");
+/* =====================================
+   THEME SWITCHER
+===================================== */
 
+const themeButtons = document.querySelectorAll(".theme-logo-btn");
+
+themeButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const selectedTheme = button.dataset.theme;
+
+        document.body.classList.remove(
+            "bento-minimalist",
+            "ai-quantum",
+            "big-bang"
+        );
+
+        document.body.classList.add(selectedTheme);
+
+        themeButtons.forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        localStorage.setItem(
+            "portfolio-theme",
+            selectedTheme
+        );
+
+    });
+
+});
+
+/* Restore Saved Theme */
+
+const savedTheme =
+    localStorage.getItem("portfolio-theme");
+
+if (savedTheme) {
+
+    document.body.classList.add(savedTheme);
+
+    themeButtons.forEach(btn => {
+
+        btn.classList.remove("active");
+
+        if (btn.dataset.theme === savedTheme) {
+            btn.classList.add("active");
+        }
+
+    });
+
+} else {
+
+    document.body.classList.add("ai-quantum");
+
+}
     // ===============================
     // NAVBAR SCROLL EFFECT
     // ===============================
