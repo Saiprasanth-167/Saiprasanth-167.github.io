@@ -21,10 +21,10 @@ themeButtons.forEach(button => {
         const selectedTheme = button.dataset.theme;
 
         document.body.classList.remove(
-            "bento-minimalist",
-            "ai-quantum",
-            "big-bang"
-        );
+    "cyberpunk",
+    "ai-quantum",
+    "big-bang"
+);
 
         document.body.classList.add(selectedTheme);
 
@@ -64,7 +64,7 @@ if (savedTheme) {
 
 } else {
 
-    document.body.classList.add("ai-quantum");
+    document.body.classList.add("cyberpunk");
 
 }
     // ===============================
