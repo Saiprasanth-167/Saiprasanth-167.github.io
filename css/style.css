@@ -1,4 +1,3 @@
-<!--CSS-->
 :root {
     --bg: #050816;
     --bg-secondary: #0d1224;
@@ -12,17 +11,6 @@
     --shadow-purple: 0 0 20px rgba(168, 85, 247, 0.4);
 }
 
-/* Ensure background grid overlay animations render natively */
-.bg-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-    background: radial-gradient(circle at 50% 50%, #0d1224 0%, #050816 100%);
-}
 /* ==========================
    RESET
 ========================== */
@@ -49,44 +37,38 @@ body{
    BACKGROUND
 ========================== */
 
-.bg-animation{
-    position:fixed;
-    inset:0;
-    z-index:-10;
-
-    background:
-    radial-gradient(circle at 20% 20%,
-    rgba(0,229,255,.18),
-    transparent 25%),
-
-    radial-gradient(circle at 80% 60%,
-    rgba(168,85,247,.18),
-    transparent 25%),
-
-    radial-gradient(circle at 50% 90%,
-    rgba(0,229,255,.08),
-    transparent 30%);
+/* ========================== BACKGROUND ========================== */
+.bg-animation {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    /* Updated to use var(--cyan) and var(--purple) dynamically */
+    background: 
+        radial-gradient(circle at 20% 20%, var(--cyan), transparent 25%), 
+        radial-gradient(circle at 80% 60%, var(--purple), transparent 25%), 
+        radial-gradient(circle at 50% 90%, var(--cyan), transparent 30%);
+    opacity: 0.4; /* Softens the neon glow so text stays readable */
 }
-
 /* ==========================
    NAVBAR
 ========================== */
 
-.navbar{
-    width:100%;
-    padding:20px 8%;
-    position:fixed;
-    top:0;
-    left:0;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    backdrop-filter:blur(20px);
-    background:rgba(0,0,0,.15);
-
-    z-index:999;
+.navbar {
+    width: 100%;
+    padding: 20px 8%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    /* Update these lines to use the theme tokens */
+    background: var(--glass);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.4s ease;
 }
 
 .logo{
@@ -118,7 +100,39 @@ body{
     cursor:pointer;
     color:var(--text);
 }
+/* Horizontal Row Layout (For 3 themes) */
+.theme-logo-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
 
+.theme-logo-btn {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    color: var(--text); /* Fixed: Changed from --text-main to --text */
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.theme-logo-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--cyan);
+}
+
+/* Highlight the active theme's button */
+/* Fixed: Removed space so it targets the button itself when active */
+.theme-logo-btn.active { 
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
 /* ==========================
    HERO
 ========================== */
@@ -278,18 +292,15 @@ body{
    GLASS
 ========================== */
 
-.glass-card{
-    background:var(--glass);
-
-    border:1px solid var(--border);
-
-    backdrop-filter:blur(15px);
-
-    border-radius:20px;
-
-    padding:30px;
-
-    transition:.3s;
+.glass-card, .project-card, .bento-item, .card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 30px;
+    transition: .3s;
+    color: var(--text); /* Ensures text colors swap dynamically */
 }
 
 .glass-card:hover{
@@ -610,4 +621,37 @@ footer{
 .nav-links a.active{
     color:#00e5ff;
     text-shadow:0 0 12px #00e5ff;
+}
+/* ==========================================================================
+   DYNAMIC THEMES CONFIGURATION
+   ========================================================================== */
+
+/* 1. Bento Minimalist (Clean Slate White & Soft Grays) */
+body.bento-minimalist {
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --cyan: #3b82f6; /* Slate Blue */
+    --purple: #64748b;
+    --glass: rgba(255, 255, 255, 0.7);
+    --border: rgba(15, 23, 42, 0.08);
+}
+
+/* 2. AI Quantum Core (Deep Cyber Tech Cyan/Green) */
+body.ai-quantum {
+    --bg: #020617;
+    --text: #f8fafc;
+    --cyan: #00ffcc; /* Quantum Neon Teal */
+    --purple: #7000ff; /* Deep Plasma Violet */
+    --glass: rgba(2, 6, 23, 0.6);
+    --border: rgba(0, 255, 255, 0.15);
+}
+
+/* 3. Big Bang Cosmic (Supernova Deep Space Orange/Magenta) */
+body.big-bang {
+    --bg: #0b001a;
+    --text: #fff5f5;
+    --cyan: #ff3e6c; /* Nebula Neon Magenta */
+    --purple: #ff8a00; /* Solar Flare Orange */
+    --glass: rgba(11, 0, 26, 0.5);
+    --border: rgba(255, 62, 108, 0.2);
 }
