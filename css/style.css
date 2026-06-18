@@ -269,7 +269,83 @@ body{
 .secondary:hover{
     background:rgba(0,229,255,.08);
 }
+/* ==========================================
+   EXPLORE PROJECTS CYBER BUTTON
+========================================== */
 
+.explore-btn {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 32px;
+
+    text-decoration: none;
+
+    color: var(--cyan);
+
+    border: 1px solid var(--cyan);
+
+    border-bottom: 4px solid var(--cyan);
+
+    border-radius: 12px;
+
+    background: rgba(0,0,0,.25);
+
+    font-weight: 600;
+
+    overflow: hidden;
+
+    transition: all .3s ease;
+}
+
+.explore-btn:hover {
+    transform: translateY(-3px);
+
+    border-bottom-width: 1px;
+
+    border-top: 4px solid var(--cyan);
+
+    box-shadow:
+        0 0 20px rgba(0,229,255,.35);
+
+    filter: brightness(1.2);
+}
+
+.explore-btn:active {
+    opacity: .8;
+}
+
+/* Moving laser line */
+
+.laser-line {
+
+    position: absolute;
+
+    width: 320px;
+    height: 6px;
+
+    background: var(--cyan);
+
+    left: -100px;
+    top: -150%;
+
+    opacity: .5;
+
+    border-radius: 999px;
+
+    box-shadow:
+        0 0 15px var(--cyan),
+        0 0 30px var(--cyan);
+
+    transition: .6s ease;
+}
+
+.explore-btn:hover .laser-line {
+    top: 150%;
+}
 /* ==========================
    SECTION
 ========================== */
