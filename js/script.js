@@ -1,3 +1,5 @@
+<!--js-->
+
 /* ======================================
    CYBERPUNK AI PORTFOLIO
    Sai Prasanth
@@ -5,42 +7,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    document.addEventListener('DOMContentLoaded', () => {
-
     // ===============================
-    // DYNAMIC THEME SELECTOR ENGINE
+    // DARK MODE BY DEFAULT (Toggle Removed)
     // ===============================
-    const themeButtons = document.querySelectorAll('.theme-logo-btn');
-
-    themeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const selectedTheme = button.getAttribute('data-theme');
-            
-            // Clean slate: drop active theme configurations
-            document.body.classList.remove('bento-minimalist', 'ai-quantum', 'big-bang');
-            
-            // Set the active configuration class onto the document body
-            document.body.classList.add(selectedTheme);
-            
-            // Manage UI active highlight state states
-            themeButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            // Cache setting choice locally
-            localStorage.setItem('portfolio-theme', selectedTheme);
-        });
-    });
-
-    // Handle initial state restoration from cache
-    const initialTheme = localStorage.getItem('portfolio-theme') || 'bento-minimalist';
-    document.body.classList.add(initialTheme);
-    
-    const activeBtn = document.querySelector(`.theme-logo-btn[data-theme="${initialTheme}"]`);
-    if (activeBtn) {
-        themeButtons.forEach(btn => btn.classList.remove('active'));
-        activeBtn.classList.add('active');
-    }
-
+    document.body.classList.remove("light", "blood-moon");
 
     // ===============================
     // NAVBAR SCROLL EFFECT
