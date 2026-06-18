@@ -117,7 +117,38 @@ body{
     cursor:pointer;
     color:var(--text);
 }
+/* Horizontal Row Layout (For 3 themes) */
+.theme-logo-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
 
+.theme-logo-btn {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.theme-logo-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--cyan);
+}
+
+/* Highlight the active theme's button */
+.theme-logo-btn.active {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+}
 /* ==========================
    HERO
 ========================== */
