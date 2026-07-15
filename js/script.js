@@ -223,7 +223,6 @@ const academicData = {
             "Optimized backend logic distribution layouts and structural database queries.",
             "Got selected for prestigious camp ever held at IITG, Honoured by Governor of Assam.",
             "Now I am the Vice-President of a club named Paryavaran for entire 3 campuses and also got promoted as NSS incharge of our college."
-            "Completed the highly demanded summer internship at IITG"
         ]
     },
     4: {
